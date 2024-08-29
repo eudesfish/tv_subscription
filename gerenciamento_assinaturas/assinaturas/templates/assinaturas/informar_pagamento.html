@@ -1,0 +1,18 @@
+<!-- templates/assinaturas/informar_pagamento.html -->
+{% extends 'base.html' %}
+
+{% block title %}Informar Pagamento{% endblock %}
+
+{% block content %}
+<h1>Informar Pagamento</h1>
+<form method="post">
+    {% csrf_token %}
+    <p>Você está prestes a informar o pagamento para a assinatura {{ assinatura.codigo_identificacao }}.</p>
+    
+    <label for="data_pagamento">Data de Pagamento:</label>
+    <input type="date" id="data_pagamento" name="data_pagamento" required>
+
+    <button type="submit">Confirmar Pagamento</button>
+    <a href="{% url 'assinaturas' %}">Cancelar</a>
+</form>
+{% endblock %}

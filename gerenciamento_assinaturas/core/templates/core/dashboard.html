@@ -1,0 +1,19 @@
+<!-- templates/core/dashboard.html -->
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h1>Dashboard</h1>
+<p>Bem-vindo ao painel de gerenciamento de assinaturas.</p>
+<div class="stats">
+    <div class="stat">
+        <h2>Total de Clientes</h2>
+        <p>{{ total_clientes }}</p>
+    </div>
+    <div class="stat">
+        <h2>Assinaturas a Vencer em 3 Dias</h2>
+        <p>{{ total_assinaturas_a_vencer }}</p>
+    </div>
+</div>
+{% endblock %}

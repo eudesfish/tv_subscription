@@ -1,0 +1,38 @@
+<!-- templates/base.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    
+    <aside class="sidebar">
+        <header class="logo-header">
+            <img src="{% static 'img/login_logo.png' %}" alt="Logo" class="logo">
+        </header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'clientes' %}">Clientes</a></li>
+                <li><a href="{% url 'servidores' %}">Servidores</a></li>
+                <li><a href="{% url 'assinaturas' %}">Assinaturas</a></li>
+                <li><a href="{% url 'relatorio' %}">Relatórios</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <div class="container">
+        <main class="main">
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+    <footer>
+        &copy; 2024 Meu Projeto
+    </footer>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!-- templates/servidores/servidor_form.html -->
+{% extends "base.html" %}
+
+{% block title %}{{ view.object.pk|yesno:"Editar Servidor,Novo Servidor" }}{% endblock %}
+
+{% block content %}
+<h1>{{ view.object.pk|yesno:"Editar Servidor,Novo Servidor" }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">{{ view.object.pk|yesno:"Salvar Alterações,Criar Servidor" }}</button>
+    <a href="{% url 'servidores' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

@@ -1,0 +1,58 @@
+<!-- templates/assinaturas/assinatura_detail.html -->
+{% extends "base.html" %}
+
+{% block title %}
+    Detalhes da Assinatura
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Detalhes da Assinatura</h1>
+    
+    <table class="table table-bordered">
+        <tr>
+            <th>Código de Identificação</th>
+            <td>{{ object.codigo_identificacao }}</td>
+        </tr>
+        <tr>
+            <th>Cliente</th>
+            <td>{{ object.cliente.nome }}</td>
+        </tr>
+        <tr>
+            <th>Telefone</th>
+            <td>{{ object.telefone }}</td>
+        </tr>
+        <tr>
+            <th>Servidor</th>
+            <td>{{ object.servidor.nome }}</td>
+        </tr>
+        <tr>
+            <th>Data de Início</th>
+            <td>{{ object.data_inicio }}</td>
+        </tr>
+        <tr>
+            <th>Data de Vencimento</th>
+            <td>{{ object.data_vencimento }}</td>
+        </tr>
+        <tr>
+            <th>Valor</th>
+            <td>{{ object.valor }}</td>
+        </tr>
+        <tr>
+            <th>Observação</th>
+            <td>{{ object.observacao }}</td>
+        </tr>
+    </table>
+    
+    <div class="d-flex justify-content-between">
+        <a href="{% url 'editar_assinatura' object.pk %}" class="btn btn-primary">Editar</a>
+        <form action="{% url 'excluir_assinatura' object.pk %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Excluir</button>
+        </form>
+        <a href="{% url 'informar_pagamento' object.pk %}" class="btn btn-success">Informar Pagamento</a>
+    </div>
+    
+    <a href="{% url 'assinaturas' %}" class="btn btn-secondary mt-3">Voltar à lista de assinaturas</a>
+</div>
+{% endblock %}

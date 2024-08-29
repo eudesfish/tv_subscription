@@ -1,0 +1,14 @@
+<!-- templates/servidores/servidor_confirm_delete.html -->
+{% extends "base.html" %}
+
+{% block title %}Excluir Servidor{% endblock %}
+
+{% block content %}
+<h1>Excluir Servidor</h1>
+<p>Você tem certeza que deseja excluir "{{ object.nome }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a href="{% url 'servidores' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

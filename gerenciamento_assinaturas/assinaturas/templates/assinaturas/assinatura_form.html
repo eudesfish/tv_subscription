@@ -1,0 +1,15 @@
+<!-- templates/assinaturas/assinatura_form.html -->
+{% extends "base.html" %}
+
+{% block title %}Nova Assinatura{% endblock %}
+
+{% block content %}
+<h1>Nova Assinatura</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+    <a href="{% url 'assinaturas' %}">Cancelar</a>
+</form>
+{% endblock %}

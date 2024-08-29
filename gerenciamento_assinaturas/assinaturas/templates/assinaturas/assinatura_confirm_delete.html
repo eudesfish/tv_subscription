@@ -1,0 +1,14 @@
+<!-- templates/assinaturas/assinatura_confirm_delete.html -->
+{% extends "base.html" %}
+
+{% block title %}Confirmar Exclusão{% endblock %}
+
+{% block content %}
+<h1>Confirmar Exclusão</h1>
+<p>Tem certeza de que deseja excluir "{{ object }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Confirmar</button>
+    <a href="{% url 'assinaturas' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

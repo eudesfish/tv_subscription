@@ -1,0 +1,49 @@
+<!-- templates/assinaturas/relatorio.html -->
+{% extends "base.html" %}
+
+{% block title %}Relatório de Assinaturas{% endblock %}
+
+{% block content %}
+<h1>Relatório de Assinaturas</h1>
+
+<form method="get" action="{% url 'relatorio' %}">
+    <label for="mes">Filtrar por mês:</label>
+    <input type="month" id="mes" name="mes" value="{{ request.GET.mes }}">
+    <button type="submit">Filtrar</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Cliente</th>
+            <th>Telefone</th>
+            <th>Servidor</th>
+            <th>Data Início</th>
+            <th>Data Vencimento</th>
+            <th>Valor</th>
+            <th>Observação</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for assinatura in assinaturas %}
+        <tr>
+            <td>{{ assinatura.cliente.nome }}</td>
+            <td>{{ assinatura.telefone }}</td>
+            <td>{{ assinatura.servidor.nome }}</td>
+            <td>{{ assinatura.data_inicio }}</td>
+            <td>{{ assinatura.data_vencimento }}</td>
+            <td>{{ assinatura.valor }}</td>
+            <td>{{ assinatura.observacao }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7">Nenhuma assinatura encontrada.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<p>Total Valor: {{ total_valor }}</p>
+
+<a href="{% url 'gerar_pdf' %}">Gerar PDF</a>
+{% endblock %}
